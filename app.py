@@ -38,8 +38,18 @@ class Song(db.Model):
 
 # Schemas
 class SongSchema(ma.Schema):
+    id = fields.Integer(primary_key=True)
+    title = fields.String(required=True)
+    artist = fields.String(required=True)
+    album = fields.String(required=True)
+    release_date = fields.Date(required=True)
+    genre = fields.String(required=True)
     class Meta:
         fields = ("id", "title", "artist", "album", "release_date", "genre")
+    
+    @post_load
+    def create_song(self, data, **kwargs):
+        return Song(**data)
     
 song_schema = SongSchema()
 songs_schema = SongSchema(many=True)
@@ -51,16 +61,14 @@ class SongListResource(Resource):
         return songs_schema.dump(all_songs)
     
     def post(self):
-        new_song = Song(
-            title =request.json['title'],
-            artist =request.json['artist'],
-            album =request.json['album'],
-            release_date =request.json['release_date'],
-            genre =request.json['genre']
-        )
-        db.session.add(new_song)
-        db.session.commit()
-        return song_schema.dump(new_song), 201
+        form_data = request.get_json()
+        try:
+            new_song = song_schema.load(form_data)
+            db.session.add(new_song)
+            db.session.commit()
+            return song_schema.dump(new_song), 201
+        except ValidationError as err:
+            return err.messages, 400
     
 class SongResource(Resource):
     def get(self, song_id):

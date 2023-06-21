@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "0f9e51ab-031f-48e1-a8dc-ae73a0b860f3",
+		"name": "Music Library API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28034914"
+	},
+	"item": [
+		{
+			"name": "Get All Songs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/songs",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Song by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/songs/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"songs",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Song",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/songs/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"songs",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post New Song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"artist\": \"Drake\",\r\n        \"release_date\": \"2011-09-11\",\r\n        \"album\": \"Take Care\",\r\n        \"genre\": \"Hip-Hop\",\r\n        \"title\": \"Headlines\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/songs",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"songs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Song",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"artist\": \"Bob Dylan\",\r\n        \"release_date\": \"1965-01-15\",\r\n        \"album\": \"Bringin It All Back Home\",\r\n        \"genre\": \"Folk\",\r\n        \"title\": \"Mr.Tamborine Man\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/songs/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"songs",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
