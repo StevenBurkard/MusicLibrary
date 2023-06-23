@@ -31,9 +31,10 @@ class Song(db.Model):
     album = db.Column(db.String(255), nullable=False)
     release_date = db.Column(db.Date, nullable=False)
     genre = db.Column(db.String(255), nullable=False)
+    likes = db.Column(db.Integer, default=0)
 
     def __repr__(self):
-        return f'{self.title} {self.artist} {self.album} {self.release_date} {self.genre}'
+        return f'{self.title} {self.artist} {self.album} {self.release_date} {self.genre} {self.likes}'
 
 
 # Schemas
@@ -44,8 +45,9 @@ class SongSchema(ma.Schema):
     album = fields.String(required=True)
     release_date = fields.Date(required=True)
     genre = fields.String(required=True)
+    likes = fields.Integer()
     class Meta:
-        fields = ("id", "title", "artist", "album", "release_date", "genre")
+        fields = ("id", "title", "artist", "album", "release_date", "genre", "likes")
     
     @post_load
     def create_song(self, data, **kwargs):
